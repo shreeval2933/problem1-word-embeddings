@@ -47,10 +47,7 @@ problem1-word-embeddings/
 ├── Visualization.ipynb            # PCA and t-SNE word embedding plots
 │
 ├── iitj_data_corpus/                 # Generated corpus folder (after running Task 1)
-│   ├── IITJ_HomePage.txt
-│   ├── Academic_Regulations.txt
-│   ├── IITJ_Department_Data.txt
-│   ├── IITJ_Faculties_Profile.txt
+│   ├── corpus.txt
 │   ├── vocabulary.csv
 │   └── wordcloud.png
 │
@@ -123,10 +120,7 @@ python Dataset_preparation.py
 
 ```
 iitj_data_corpus/
-├── IITJ_HomePage.txt           ← IIT Jodhpur main page
-├── Academic_Regulations.txt    ← Academic rules document
-├── IITJ_Department_Data.txt    ← All 10 department pages combined
-├── IITJ_Faculties_Profile.txt  ← All faculty profile pages combined
+├── corpus.txt                  ← All cleaned data 
 ├── vocabulary.csv              ← Sorted unique word list
 └── wordcloud.png               ← Word frequency visualization
 ```
@@ -138,7 +132,7 @@ iitj_data_corpus/
 **File**: `Model_training.ipynb`
 
 **What it does**:
-- Uploads and unzips the `iitj_data_corpus.zip` folder (created in Task 1)
+-  Uploads `corpus.txt` file (created in Task 1)
 - Trains **54 Word2Vec models** across all hyperparameter combinations:
   - Architectures: CBOW (`sg=0`), Skip-gram (`sg=1`)
   - Embedding dimensions: `50`, `100`, `200`
@@ -149,12 +143,8 @@ iitj_data_corpus/
 
 **How to run on Colab**:
 
-1. First, zip your corpus folder locally:
-   ```
-   iitj_data_corpus.zip  (contains the iitj_data_corpus/ folder)
-   ```
-2. Run the script — it will prompt you to upload the ZIP file
-3. After training, the following files are auto-downloaded:
+1. Run the script — it will prompt you to upload the corpus.txt file
+2. After training, the following files are auto-downloaded:
    - `training_experiments_report.csv`
    - `iitj_skipgram.model`
    - `iitj_cbow.model`
@@ -242,7 +232,7 @@ python Visualization.py
 | `Model_training.ipynb` | Word2Vec training source code | — |
 | `Semantic_analysis.ipynb` | Semantic analysis source code | — |
 | `Visualization.ipynb` | Visualization source code | — |
-| `iitj_data_corpus/` | Cleaned corpus folder with all `.txt` files | Task 1 |
+| `iitj_data_corpus/` | Cleaned corpus folder with `.txt` file | Task 1 |
 | `iitj_data_corpus/vocabulary.csv` | Sorted unique vocabulary list | Task 1 |
 | `iitj_data_corpus/wordcloud.png` | Word frequency cloud image | Task 1 |
 | `training_experiments_report.csv` | All 54 experiment results | Task 2 |
@@ -257,7 +247,7 @@ python Visualization.py
 | Statistic | Value |
 |-----------|-------|
 | Total source URLs scraped | 130+ |
-| Total `.txt` corpus files | 4 |
+| Total `.txt` corpus files | 1 |
 | Data sources | Homepage, Academic Regulations, 10 Departments, 100+ Faculty Profiles |
 | Preprocessing steps | HTML removal, lowercasing, punctuation stripping, stopword removal, short-token filtering |
 
